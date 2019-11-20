@@ -1,0 +1,48 @@
+# Docker
+
+## Dockerfile
+
+```dockerfile
+FROM node:6.11.5
+
+WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install
+COPY . .
+
+CMD [ "npm", "start" ]
+```
+
+- FROM node:6.11.5
+  - 镜像建立在 `node:6.11.5` 镜像的基础上，`node:6.11.5` 是一个公共镜像，经过了良好的测试和验证。
+- WORKDIR /usr/src/app
+  - 指定工作目录，后续的所有操作将在工作目录进行（镜像的文件系统）
+- COPY package.json .
+  - 从当前目录复制 `package.json` （你的主机）到镜像的工作目录中（此处为 `/usr/src/app`）
+- RUN npm install
+  - 在镜像的工作目录中运行 `npm install` 命令，将项目所需的依赖安装到镜像工作目录中；
+- COPY . .
+  - 将剩余的源码复制到镜像工作目录中
+- CMD [ "npm", "start" ]
+  - 容器内运行的进程（指定运行的命令）；
+
+## Docker Command
+
+### 启动容器
+
+```bash
+docker container run --publish 8000:8080 --detach --name bb bulletinboard:1.0
+```
+
+- --publish 8000:8080
+  - 将主机上 8000 端口的网络流量转发到容器中的 8080 端口；（如果想要通过网络访问容器内的端口，必须要在这一步设置端口流量转发，否则会被防火墙阻止访问）
+- --detach
+  - 后台运行该容器
+- --name
+  - 容器名称
+
+### 删除容器
+
+```bash
+docker container rm --force bb
+```
