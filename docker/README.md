@@ -92,3 +92,6 @@ spec:
   - kind：类型；
   - metadata：描述信息；
   - spec：pod 的定制化配置参数；
+
+## 共享 Docker 镜像
+
