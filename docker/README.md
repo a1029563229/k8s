@@ -86,4 +86,9 @@ spec:
 
 - 两个对象
   - Deployment：展示了一组可扩展的相同的 pods；
-  - NodePort：
+  - NodePort：一个将本机 30001 端口的流量转发到 pod 中的 8080 端口的服务；
+- K8S 的配置项基本上都遵循下面的格式
+  - apiVersion：指定用于解析 yaml 配置文件的 k8s 版本；
+  - kind：类型；
+  - metadata：描述信息；
+  - spec：pod 的定制化配置参数；
