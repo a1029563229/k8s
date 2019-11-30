@@ -52,3 +52,14 @@ kubectl get deployments
 ```
 
 k8s 内部运行的 pod 在一个独立的网络环境中运行。默认来说他们可以对同一个集群的其他 pod 和 service 处于可见状态，但是在网络之外不可见。我们可以使用 kubectl 提供的 API 在应用之间通信。
+
+## Pods
+
+- 当你创建了一个 Depolyment 后，k8s 会创建一个 Pod 用于承载你的应用实例。
+- Pods 是 K8S 平台的原子单元，每一个 Pod 都将绑定一个 Node；当一个 Node 挂掉后，集群会调度可用的 Node 上一个 Pod 替换它；
+- Pod 永远运行在 Node 上。每个 Node 都被 Master 所管理。一个 Node 可以有多个 Pod，并且 K8S 会自动处理跨集群 Nodes 调度 Pods 的问题。
+- 每一个 K8S Node 至少要运行：
+  - Kubelet，它管理Pods和在机器上运行的容器。
+  - 一个容器工具，用于拉取镜像；
+
+![图示](http://shadows-mall.oss-cn-shenzhen.aliyuncs.com/images/blogs/other/Jietu20191129-174359.png)
