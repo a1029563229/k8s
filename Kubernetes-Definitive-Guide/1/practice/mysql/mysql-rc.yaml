@@ -16,6 +16,6 @@ spec:
         image: mysql  # 容器对应的 Docker Image
         ports:
         - containerPort: 3306 # 容器应用简体的端口号
-        env:
+        env:  # 注入容器内的环境变量
         - name: MYSQL_ROOT_PASSWORD
           value: "123456"
